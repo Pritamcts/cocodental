@@ -313,7 +313,7 @@ const OrderDetails: React.FC = () => {
   return (
     <div className="mt-10 text-white">
       <h1 className="text-white text-4xl font-bold mb-8 text-center animate-fade-in bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
-        Order Details
+        Order D
       </h1>
       <div className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md rounded-xl shadow-2xl p-6 border border-white/20 animate-slide-up">
         <div className="mb-6">
