@@ -22,7 +22,7 @@ const MicToggleButton: React.FC<MicToggleButtonProps> = ({ role }) => {
   return (
     <button
       onClick={toggleMic}
-      className="flex-grow flex items-center justify-center border-2 h-10 hover:bg-gray-700"
+      className={`flex-grow flex items-center justify-center border-2 h-10 hover:bg-gray-800 ${isMuted ? 'bg-gray-900' : 'bg-gray-700'}`}
     >
       {isMuted ? (
         <>
@@ -31,7 +31,7 @@ const MicToggleButton: React.FC<MicToggleButtonProps> = ({ role }) => {
           ) : (
             <VolumeOffIcon width={24} className="brightness-0 invert" />
           )}
-          <span className="ml-2">Unmute</span>
+          <span className="ml-2 text-white">Unmute</span>
         </>
       ) : (
         <>
@@ -40,8 +40,7 @@ const MicToggleButton: React.FC<MicToggleButtonProps> = ({ role }) => {
           ) : (
             <Volume2Icon width={24} className="brightness-0 invert" />
           )}
-
-          <span className="ml-2">Mute</span>
+          <span className="ml-2 text-white">Mute</span>
         </>
       )}
     </button>
