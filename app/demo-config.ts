@@ -202,8 +202,6 @@ import { DemoConfig, ParameterLocation, SelectedTool } from "@/lib/types";
 //   }
 // };
 
-
-
 // hello
 
 
@@ -354,6 +352,7 @@ function getSystemPrompt() {
   
   ### **Final Goal: The Best Patient Experience**
   SmartVoice AI should enhance the patient experience, reduce wait times, and provide seamless support, ensuring every caller feels valued and taken care of regardless of their language preference.
+
   `;
 
   sysPrompt = sysPrompt.replace(/"/g, '\"')
