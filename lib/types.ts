@@ -13,7 +13,7 @@ export enum RoleEnum {
   USER = "USER",
   ASSISTANT = "ASSISTANT",
   TOOL_CALL = "TOOL_CALL",
-  TOOL_RESULT = "TOOL_RESULT"
+  TOOL_RESULT = "TOOL_RESULT",
 }
 
 export enum ParameterLocation {
@@ -21,13 +21,13 @@ export enum ParameterLocation {
   QUERY = "PARAMETER_LOCATION_QUERY",
   PATH = "PARAMETER_LOCATION_PATH",
   HEADER = "PARAMETER_LOCATION_HEADER",
-  BODY = "PARAMETER_LOCATION_BODY"
+  BODY = "PARAMETER_LOCATION_BODY",
 }
 
 export enum KnownParamEnum {
   UNSPECIFIED = "KNOWN_PARAM_UNSPECIFIED",
   CALL_ID = "KNOWN_PARAM_CALL_ID",
-  CONVERSATION_HISTORY = "KNOWN_PARAM_CONVERSATION_HISTORY"
+  CONVERSATION_HISTORY = "KNOWN_PARAM_CONVERSATION_HISTORY",
 }
 
 export interface Message {
@@ -142,4 +142,13 @@ export interface OrderItem {
 export interface OrderDetailsData {
   items: OrderItem[];
   totalAmount: number;
+}
+
+export interface CheckAvailabilityRequestDetails {
+  name: string;
+  phoneNumber: string;
+  email: string;
+  start: string;
+  timeZone: string;
+
 }
