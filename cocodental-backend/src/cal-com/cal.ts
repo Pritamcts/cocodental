@@ -1,5 +1,6 @@
 import 'dotenv/config';
-import * as moment from 'moment';
+// import * as moment from 'moment';
+import * as moment from 'moment-timezone';
 
 // Environment variable validation
 if (!process.env.CALCOM_API_KEY) {
@@ -37,9 +38,10 @@ export interface BookingRequest {
 }
 
 export interface BookingResponse {
-  success: boolean;
+  status: boolean;
   booking?: any;
   error?: string;
+  message?: string;
 }
 
 const config: Config = {
@@ -49,6 +51,7 @@ const config: Config = {
 
 export async function getAvailability(
   days: number = 5,
+  timezone: string,
 ): Promise<
   | { success: boolean; availability: { slots: any[] } }
   | { success: false; error: string }
@@ -92,7 +95,11 @@ export async function getAvailability(
     }
 
     const slots = Object.values(data.data.slots).flat();
-
+    //Code to convert the time in each slot to specific timezone. here timezone will be the input in the request
+    slots.forEach((slot: any) => {
+      slot.time = moment(slot.time).tz(timezone).format('YYYY-MM-DD HH:mm:ss');
+    });
+    console.log(slots);
     return {
       success: true,
       availability: { slots },
@@ -147,13 +154,15 @@ export async function createBooking(
     console.log('Booking response:', JSON.stringify(data, null, 2));
 
     return {
-      success: true,
-      booking: data,
+      status: true,
+      // booking: data,
+      message: 'Booking created successfully',
     };
   } catch (error) {
     console.error('Failed to create booking:', error);
     return {
-      success: false,
+      status: false,
+      message: 'Booking failed',
       error:
         error instanceof Error ? error.message : 'Failed to create booking',
     };

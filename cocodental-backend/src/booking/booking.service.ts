@@ -40,8 +40,8 @@ export class BookingService {
     }
   }
 
-  async getAvailability(days: any) {
-    return await getAvailability(days);
+  async getAvailability(days: any, timezone: string) {
+    return await getAvailability(days, timezone);
   }
 
   async createBooking(bookingData: BookingRequest) {
@@ -55,7 +55,7 @@ export class BookingService {
       attendee: {
         name: bookingData.name,
         email: bookingData.email,
-        timeZone: 'America/New_York',
+        timeZone: bookingData.timeZone || 'America/New_York',
         phoneNumber: bookingData.phoneNumber || '',
         language: 'en',
       },

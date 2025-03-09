@@ -14,3 +14,8 @@ export interface BookingEvent {
   metadata: any;
   eventTypeId: number;
 }
+
+export interface BookingAvailabilityRequest {
+  days: number;
+  timezone: string;
+}
